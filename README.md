@@ -22,17 +22,36 @@
 
 # 기술 스택
 
-1. 기본적인 템플릿?은
-   1. React Native
-   2. Firebase Firestore
+기본적인 템플릿?은
+
+1. React Native
+2. Firebase Firestore
+3. Recoil
+
+
 
 1. 푸시알람으로 문자 보내는 주기 알려주기
    * https://www.npmjs.com/package/react-native-sms
-2. 초대코드를 통한 계모임 가입
-3. 공유 계정 ID, PW 등록
-4. 계모임원 휴대폰 번호로 파티 추가
+2. Navigation은 Tab 기반으로 react-navigation v5 사용
 
 
 
 # 화면 구성
 
+1. 구독 현황(여러개 가능)
+   1. 현재 계장 맡고있는 서비스들
+   2. 서비스 추가
+      1. 계원들 휴대폰 번호 입력
+      2. plan 입력
+      3. 요청 개월 수 입력
+      4. 지금 보내기
+   3. 서비스 상세
+      1. 구독자 수정
+      2. 지금 메시지 보내기(Stack)
+         1. 휴대폰 번호 입력
+         2. 얼마어치 요청할건지 개월 수 입력
+         3. 메시지 주기 설정
+2. 내 정보
+   1. 내 휴대폰 번호(필요 없긴 한데 유저 식별용)
+   2. 주기 푸시 알림설정 켜기/끄기
+   3. 다크모드(Option)
