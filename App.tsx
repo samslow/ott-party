@@ -1,23 +1,18 @@
 import React from 'react';
-import {Text} from 'react-native';
-import Temp from '@components/Temp';
-import styled from '@emotion/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SubscribeList from '@stacks/SubscribeList';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <See>
-      <Text>helloasdfadf</Text>
-      <Text>test</Text>
-      <Temp />
-    </See>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="SubscribeList">
+        <Stack.Screen name="SubscribeList" component={SubscribeList} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default App;
-
-const See = styled.View`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-`;
