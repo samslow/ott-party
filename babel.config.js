@@ -9,6 +9,8 @@ module.exports = {
         alias: {
           '~': '.',
           '@components': './src/components',
+          '@stacks': './src/stacks',
+          '@shared': './src/shared',
         },
       },
     ],
