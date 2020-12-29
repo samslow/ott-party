@@ -7,6 +7,7 @@ const App = () => {
   return (
     <See>
       <Text>helloasdfadf</Text>
+      <Text>test</Text>
       <Temp />
     </See>
   );
