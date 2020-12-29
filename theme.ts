@@ -10,16 +10,22 @@ export interface ThemeProps {
   };
 }
 
+const baseTheme = {
+  primary: '#2596FF',
+};
+
 const lightTheme = {
+  ...baseTheme,
   background: '#fff',
-  primary: '#000',
-  secondary: '#333',
+  primaryText: '#000',
+  secondaryText: '#333',
 };
 
 const darkTheme = {
+  ...baseTheme,
   background: '#222',
-  primary: '#fff',
-  secondary: '#aaa',
+  primaryText: '#fff',
+  secondaryText: '#aaa',
 };
 
 export default colorScheme === 'light' ? lightTheme : darkTheme;
