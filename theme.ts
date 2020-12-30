@@ -1,12 +1,9 @@
-import { Appearance } from 'react-native';
-
-const colorScheme = Appearance.getColorScheme();
-
 export interface ThemeProps {
   theme?: {
     background: string;
     primary: string;
     secondary: string;
+    text: string;
   };
 }
 
@@ -17,15 +14,13 @@ const baseTheme = {
 const lightTheme = {
   ...baseTheme,
   background: '#fff',
-  primaryText: '#000',
-  secondaryText: '#333',
+  text: '#000',
 };
 
 const darkTheme = {
   ...baseTheme,
   background: '#222',
-  primaryText: '#fff',
-  secondaryText: '#aaa',
+  text: '#fff',
 };
 
-export default colorScheme === 'light' ? lightTheme : darkTheme;
+export { lightTheme, darkTheme };
