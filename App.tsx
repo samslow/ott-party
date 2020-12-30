@@ -30,7 +30,7 @@ export default function App() {
             name="SubscribeList"
             component={SubscribeList}
             options={{
-              title: `${colorScheme}`,
+              title: `구독 현황`,
               headerRight: () => <Myinfo />,
             }}
           />
