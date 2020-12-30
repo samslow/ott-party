@@ -12,6 +12,6 @@ export const SubscriptionList = styled.FlatList<ThemeProps>`
   background-color: ${(props) => props.background};
 `;
 
-export const FlatListContainer = styled.FlatList<ThemeProps>`
+export const SubscriptionList = styled.FlatList<ThemeProps>`
   background-color: ${(props) => props.theme.background};
 `;
