@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useMemo, useState } from 'react';
 import { SubscriptionList } from './style';
 import SubscribeItem from '@components/SubscribeItem';
@@ -37,6 +38,37 @@ const SubscribeList = () => {
         onPress={() => navigation.navigate('Subscribe')}
       />
     </FullflexContainer>
+=======
+import React from 'react';
+import { Container, FullFlexContainer, FlatListContainer } from './style';
+import SubscribeItem from '@components/SubscribeItem';
+
+interface SubscribeItemData {
+  id: number;
+}
+
+const getDummyData = (): SubscribeItemData[] => {
+  const dd = [];
+  for (let i = 0; i < 10; i++) {
+    dd.push({ id: i });
+  }
+  return dd;
+};
+
+const SubscribeList = () => {
+  const renderItem = ({ item }) => <SubscribeItem id={item.id} />;
+
+  return (
+    <FullFlexContainer>
+      <Container>
+        <FlatListContainer
+          data={getDummyData()}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </Container>
+    </FullFlexContainer>
+>>>>>>> feat: init sub status
   );
 };
 
