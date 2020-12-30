@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, FullFlexContainer, FlatListContainer } from './style';
+import { Container, FullFlexContainer, SubscriptionList } from './style';
 import SubscribeItem from '@components/SubscribeItem';
 
 interface SubscribeItemData {
@@ -20,7 +20,7 @@ const SubscribeList = () => {
   return (
     <FullFlexContainer>
       <Container>
-        <FlatListContainer
+        <SubscriptionList
           data={getDummyData()}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}

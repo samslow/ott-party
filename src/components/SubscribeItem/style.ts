@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { ThemeProps } from 'theme';
 
 
-export const SubItemCard = styled.View<ThemeProps>`
+export const ServiceCard  = styled.View<ThemeProps>`
   background-color: ${(props) => props.theme.background};
   margin: 15px auto 0 auto;
   padding: 18px;
@@ -16,7 +16,7 @@ export const SubItemCard = styled.View<ThemeProps>`
 `;
 
 
-export const SubItemCardHeader = styled.View<ThemeProps>`
+export const Header = styled.View<ThemeProps>`
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -32,18 +32,18 @@ export const SubService = styled.View<ThemeProps>`
 `;
 
 
-export const SubItemCardBody = styled.View<ThemeProps>`
+export const Body = styled.View<ThemeProps>`
   display: flex;
   width: 100%;
   padding: 10px 0;
 `;
 
-export const SubItemCardSection = styled.View<ThemeProps>`
+export const Section = styled.View<ThemeProps>`
   display: flex;
   width: 100%;
 `;
 
-export const SubPriceContainer = styled.View<ThemeProps>`
+export const PriceContainer = styled.View<ThemeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,4 +51,4 @@ export const SubPriceContainer = styled.View<ThemeProps>`
   padding: 20px 0;
   background-color: #F9F9FB;
   border-radius: 18.5px;
-`
+`;

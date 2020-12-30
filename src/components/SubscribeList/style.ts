@@ -11,6 +11,6 @@ export const Container = styled.View<ThemeProps>`
   flex: 1;
 `;
 
-export const FlatListContainer = styled.FlatList<ThemeProps>`
+export const SubscriptionList = styled.FlatList<ThemeProps>`
   background-color: ${(props) => props.theme.background};
 `;
