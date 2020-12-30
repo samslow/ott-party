@@ -15,15 +15,13 @@ const getDummyData = (): SubscribeItemData[] => {
 };
 
 const SubscribeList = () => {
-  const renderItem = ({ item }) => <SubscribeItem id={item.id} />;
-
   return (
     <FullFlexContainer>
       <Container>
         <SubscriptionList
           data={getDummyData()}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <SubscribeItem id={item.id} />}
+          keyExtractor={(item) => String(item.id)}
         />
       </Container>
     </FullFlexContainer>
