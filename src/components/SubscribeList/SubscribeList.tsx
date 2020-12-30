@@ -1,16 +1,30 @@
-import { Txt } from '@src/shared';
 import React from 'react';
-import { Container, FullFlexContainer } from './style';
+import { Container, FullFlexContainer, FlatListContainer } from './style';
+import SubscribeItem from '@components/SubscribeItem';
+
+interface SubscribeItemData {
+  id: number;
+}
+
+const getDummyData = (): SubscribeItemData[] => {
+  const dd = [];
+  for (let i = 0; i < 10; i++) {
+    dd.push({ id: i });
+  }
+  return dd;
+};
 
 const SubscribeList = () => {
+  const renderItem = ({ item }) => <SubscribeItem id={item.id} />;
+
   return (
     <FullFlexContainer>
       <Container>
-        {/* 여기는 테스트로 보기위한 용도입니다.  */}
-        <Txt>구독 서비스 추가</Txt>
-        <Txt size={22} color={'#888'} fontWeight="bold">
-          구독 서비스 추가
-        </Txt>
+        <FlatListContainer
+          data={getDummyData()}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </Container>
     </FullFlexContainer>
   );
