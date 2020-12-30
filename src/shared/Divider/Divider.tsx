@@ -5,30 +5,26 @@ import { ThemeProps } from 'theme';
 interface DividerProps {
   width?: number;
   backgroundColor?: string;
-  marginTop?: number;
-  marginBottom?: number;
+  verticalMargin?: number;
 }
 
 export default function Divider({
   width,
   backgroundColor,
-  marginTop,
-  marginBottom,
+  verticalMargin,
 }: DividerProps) {
   return (
     <AdaptiveDivider
       width={width}
       backgroundColor={backgroundColor}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
+      verticalMargin={verticalMargin}
     />
   );
 }
 
 const AdaptiveDivider = styled.View<DividerProps & ThemeProps>`
   background-color: ${(props) => props.backgroundColor ?? props.theme.text};
-  margin: ${(props) => props.marginTop ?? 0}px auto
-    ${(props) => props.marginTop ?? 0}px auto;
+  margin: ${(props) => props.verticalMargin ?? 0}px auto;
   width: ${(props) => String(props.width ?? 100)}%;
   height: 1px;
 `;

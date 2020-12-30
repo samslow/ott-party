@@ -39,7 +39,7 @@ const SubscribeItem = ({ id }: SubscribeItemProps) => {
             </Txt>
           </SubPriceContainer>
         </SubItemCardSection>
-        <Divider backgroundColor={'#D2D1D7'} marginTop={13} marginBottom={16} />
+        <Divider backgroundColor={'#D2D1D7'} verticalMargin={13} />
         <SubItemCardSection>
           <Txt size={16} fontWeight={'700'}>
             이번달 결제 예정 금액
