@@ -13,10 +13,10 @@
 		"target": "esnext",
 		"baseUrl": ".",
 		"paths": {
-			"~": ["src/*"],
-			"tests": ["tests/*"],
+      "@components/*": ["src/components/*"],
+			"@stacks/*": ["src/stacks/*"],
 			"@src/*": ["src/*"],
-			"@components/*": ["src/components/*"],
+			"@shared/*": ["src/shared/*"],
     },
     "noUnusedLocals": true,
   },

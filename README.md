@@ -1,10 +1,10 @@
 # OTT 파티
 
-1. OTT 동시시청을 편하게 관리하기 위한 앱
-2. 타겟
+1. OTT 여러명이 시청할때 편하게 관리하기 위한 앱
+2. 타겟 플랫폼
    * 왓챠
    * 넷플릭스
-   * 디즈니플러스?
+   * 디즈니플러스?
    * 쿠팡 플레이?
 3. 필수 기능
    1. 푸시알람으로 문자 보내는 주기 알려주기
@@ -37,7 +37,9 @@
 
 1. 푸시알람으로 문자 보내는 주기 알려주기
    * https://www.npmjs.com/package/react-native-sms
-2. Navigation은 Tab 기반으로 react-navigation v5 사용
+2. 휴대폰 연락처 가져오기
+   1. https://github.com/morenoh149/react-native-contacts
+3. Navigation은 Tab 기반으로 react-navigation v5 사용
 
 
 

@@ -8,4 +8,5 @@ module.exports = {
   endOfLine: 'lf',
   jsxSingleQuote: false,
   parser: 'typescript',
+  bracketSpacing: true,
 };
