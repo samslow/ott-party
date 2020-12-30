@@ -23,6 +23,6 @@ export default function Txt({ children, size, color, fontWeight }: Props) {
 
 const AdaptiveText = styled.Text<TextProps & ThemeProps>`
   font-size: ${(props) => String(props?.size ?? 17)}px;
-  color: ${(props) => props.color ?? props.theme.text};
+  color: ${(props) => props.color ?? props.text};
   font-weight: ${(props) => props.fontWeight ?? 'normal'};
 `;
