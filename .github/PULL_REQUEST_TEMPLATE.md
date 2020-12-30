@@ -1,39 +1,5 @@
-## Pull request type
+### 1. 이 PR로 바뀌는 것
 
-Please check the type of change your PR introduces:
+### 2. 봐줬으면 하는것
 
-- [ ] Bugfix
-- [ ] Feature
-- [ ] Code style update (formatting, renaming)
-- [ ] Refactoring (no functional changes, no api changes)
-- [ ] Build related changes
-- [ ] Documentation content changes
-- [ ] Other (please describe):
-
-## What is the current behavior?
-
-Please describe the current behavior that you are modifying, or link to a relevant issue.
-
-Issue Number: N/A
-
-## What is the new behavior?
-
-Please describe the behavior or changes that are being added by this PR.
-
--
--
--
-
-## Does this introduce a breaking change?
-
-- [ ] Yes
-- [ ] No
-
-If this introduces a breaking change, please describe the impact and migration path for existing applications below.
-
-
-## UI Screenshot
-
-Please upload image such as screenshots of how the component looks before and after the change.
-
-## Other information
+### 3. 스크린샷
