@@ -16,13 +16,13 @@ interface Props extends TextProps {
 export default function Txt({ children, size, color, fontWeight }: Props) {
   return (
     <AdaptiveText size={size} color={color} fontWeight={fontWeight}>
-      {children}
+      {String(children)}
     </AdaptiveText>
   );
 }
 
 const AdaptiveText = styled.Text<TextProps & ThemeProps>`
   font-size: ${(props) => String(props?.size ?? 17)}px;
-  color: ${(props) => props.color ?? props.theme.text};
+  color: ${(props) => props.color ?? props.text};
   font-weight: ${(props) => props.fontWeight ?? 'normal'};
 `;

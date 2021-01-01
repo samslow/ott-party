@@ -1,13 +1,18 @@
-import Myinfo from '@components/Myinfo';
 import { ThemeProvider } from '@emotion/react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Subscribe from '@stacks/Subscribe';
 import SubscribeList from '@stacks/SubscribeList';
 import React, { useEffect, useState } from 'react';
 import { Appearance, StatusBar } from 'react-native';
 import { darkTheme, lightTheme } from './theme';
 
-const Stack = createStackNavigator();
+export type StackParams = {
+  SubscribeList: undefined;
+  Subscribe: undefined;
+};
+
+const Stack = createStackNavigator<StackParams>();
 
 export default function App() {
   const [colorScheme, setColorScheme] = useState<
@@ -30,19 +35,21 @@ export default function App() {
         <StatusBar
           barStyle={colorScheme === 'light' ? 'dark-content' : 'light-content'}
         />
-        <Stack.Navigator initialRouteName="SubscribeList" headerMode="float">
+        <Stack.Navigator initialRouteName="Subscribe" headerMode="screen">
           <Stack.Screen
             name="SubscribeList"
             component={SubscribeList}
             options={{
-              title: `구독 현황`,
-              headerRight: () => <Myinfo />,
-              headerStyle: {
-                backgroundColor:
-                  colorScheme === 'light'
-                    ? lightTheme.background
-                    : darkTheme.background,
-              },
+              title: '구독 현황',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Subscribe"
+            component={Subscribe}
+            options={{
+              title: '구독 추가',
+              headerShown: false,
             }}
           />
         </Stack.Navigator>
