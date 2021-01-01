@@ -18,7 +18,11 @@ const CardBody = () => {
         </Txt>
         <PriceContainer>
           <Txt size={14} fontWeight={'700'}>
-            매월 6일 알림 예정
+            매월{' '}
+            <Txt size={14} color={'#7F66FF'}>
+              6
+            </Txt>
+            일 알림 예정
           </Txt>
           <Txt size={14} fontWeight={'700'}>
             {`총 ₩ ${totalAmount}`}

@@ -12,7 +12,7 @@ interface TextProps {
 }
 
 interface Props extends TextProps {
-  children: string;
+  children: string | React.ReactNode;
 }
 
 export default function Txt({
