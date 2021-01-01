@@ -26,7 +26,7 @@ const CardBody = () => {
           <Txt size={14} fontWeight={'700'}>
             총 ₩ 14,500
           </Txt>
-          <Txt size={14} fontWeight={'700'}>
+          <Txt size={14} fontWeight={'700'} style={{ marginTop: 11 }}>
             인당 ₩ 3,625
           </Txt>
         </PriceContainer>

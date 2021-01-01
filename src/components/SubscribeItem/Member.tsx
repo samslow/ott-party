@@ -19,7 +19,11 @@ const Member = ({ name, isPaid }: MemberProps) => {
             : require('@src/images/ic_pay_status_inactive.png')
         }
       />
-      <Txt size={13} fontWeight={'700'} color={'rgba(196, 196, 196, 1)'}>
+      <Txt
+        size={13}
+        fontWeight={'700'}
+        color={'rgba(196, 196, 196, 1)'}
+        style={{ marginLeft: 9 }}>
         {name}
       </Txt>
     </MemberView>
