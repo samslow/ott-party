@@ -1,6 +1,7 @@
 import PlatformCardList from '@components/PlatformCardList';
 import { titleBoxCss, TitleText } from '@components/PlatformCardList/style';
 import { useTheme } from '@emotion/react';
+import Header from '@src/shared/Header';
 import { FullflexContainer } from '@src/shared/style';
 import React, { useMemo, useRef, useState } from 'react';
 import { View } from 'react-native';
@@ -66,6 +67,7 @@ export default function Subscribe() {
 
   return (
     <FullflexContainer color={theme?.greyBackground}>
+      <Header title="구독 추가" />
       <PlatformCardList
         data={platformData}
         ref={cardRef}

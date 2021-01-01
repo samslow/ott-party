@@ -1,7 +1,69 @@
-import React from 'react';
+import { ThemeProvider } from '@emotion/react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Myinfo from '@stacks/MyInfo';
+import Subscribe from '@stacks/Subscribe';
+import SubscribeList from '@stacks/SubscribeList';
+import React, { useEffect, useState } from 'react';
+import { Appearance, StatusBar } from 'react-native';
+import { darkTheme, lightTheme } from '../theme';
 
-function App() {
-  return <div></div>;
+export type StackParams = {
+  SubscribeList: undefined;
+  Subscribe: undefined;
+  MyInfo: undefined;
+};
+
+const Stack = createStackNavigator<StackParams>();
+
+export default function App() {
+  const [colorScheme, setColorScheme] = useState<
+    'light' | 'dark' | null | undefined
+  >(Appearance.getColorScheme());
+
+  if (!colorScheme) {
+    return null;
+  }
+
+  useEffect(() => {
+    Appearance.addChangeListener(({ colorScheme }) => {
+      setColorScheme(colorScheme);
+    });
+  }, []);
+
+  return (
+    <ThemeProvider theme={colorScheme === 'light' ? lightTheme : darkTheme}>
+      <NavigationContainer>
+        <StatusBar
+          barStyle={colorScheme === 'light' ? 'dark-content' : 'light-content'}
+        />
+        <Stack.Navigator initialRouteName="SubscribeList" headerMode="screen">
+          <Stack.Screen
+            name="SubscribeList"
+            component={SubscribeList}
+            options={{
+              title: '구독 현황',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Subscribe"
+            component={Subscribe}
+            options={{
+              title: '구독 추가',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="MyInfo"
+            component={Myinfo}
+            options={{
+              title: '내 정보',
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
+  );
 }
-
-export default App;

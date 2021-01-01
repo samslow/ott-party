@@ -10,7 +10,7 @@ export interface ThemeProps {
 
 const baseTheme = {
   greyText: '#888',
-  primary: '#2596FF',
+  primary: '#7F66FF',
 };
 
 const lightTheme = {
