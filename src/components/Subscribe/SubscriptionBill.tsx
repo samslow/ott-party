@@ -14,10 +14,9 @@ interface Props {
 }
 
 export default function SubscriptionBill({ selectedPlatform }: Props) {
-  console.log('selectedPlatform', selectedPlatform);
   return (
     <TopRoundBox>
-      <BillingPlan plans={selectedPlatform?.plans} />
+      <BillingPlan plans={selectedPlatform?.plans ?? []} />
       <Subscribers />
       <TotalPrice />
       <CollectingPeriod />

@@ -16,7 +16,7 @@ interface Props extends TextProps {
 export default function Txt({ children, size, color, fontWeight }: Props) {
   return (
     <AdaptiveText size={size} color={color} fontWeight={fontWeight}>
-      {children}
+      {String(children)}
     </AdaptiveText>
   );
 }

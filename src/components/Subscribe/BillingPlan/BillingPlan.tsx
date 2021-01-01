@@ -1,18 +1,21 @@
 import { css } from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { Txt } from '@src/shared';
-import { addDelimiter } from '@src/utils';
 import React, { useMemo, useState } from 'react';
 import { FlatList, View } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { ThemeProps } from 'theme';
 import { sectionTitleCss } from '../style';
 import { Plan } from '../Subscribe';
 import {
-  inputTextCss,
+  planNameCss,
   modalCss,
   ModalView,
-  PlanInputBox,
+  PlanNameBox,
   PlanItem,
+  PlanPriceBox,
 } from './style';
 
 interface Props {
@@ -20,17 +23,10 @@ interface Props {
 }
 
 export default function BillingPlan({ plans }: Props) {
+  const theme: ThemeProps = useTheme();
   const [planModalVisible, setPlanModalVisible] = useState(false);
   const [plan, setPlan] = useState<string | null>(null);
-
-  const selectedPlan: Plan | null = useMemo(() => {
-    if (!plans) {
-      return null;
-    }
-    const selectedIdx = plans.findIndex((p) => p.planName === plan);
-
-    return selectedIdx === -1 ? null : plans[selectedIdx];
-  }, [plans, plan]);
+  const [price, setPrice] = useState('');
 
   return (
     <View>
@@ -39,27 +35,47 @@ export default function BillingPlan({ plans }: Props) {
           플랜
         </Txt>
       </View>
-      <PlanInputBox
+      <PlanNameBox
         onPress={() => setPlanModalVisible((visible) => !visible)}
-        activeOpacity={0.5}>
-        <View style={inputTextCss}>
+        activeOpacity={0.5}
+        disabled={!plans}>
+        <View style={planNameCss}>
           <View
             style={css`
               flex-direction: row;
               align-items: center;
             `}>
-            <Txt size={20} color={plan == null ? '#888' : undefined}>
+            <Txt size={15} color={plan == null ? theme.greyText : theme.text}>
               {plan ?? '플랜을 선택하세요'}
             </Txt>
-            {selectedPlan != null && (
-              <Txt size={16} color={'#888'}>
-                {`  ₩ ${String(selectedPlan?.price) ?? '0'}`}
-              </Txt>
-            )}
           </View>
           <MaterialIcons name="keyboard-arrow-down" size={30} color={'#888'} />
         </View>
-      </PlanInputBox>
+      </PlanNameBox>
+      <PlanPriceBox>
+        <TextInput
+          style={css`
+            color: ${price == '' ? theme.greyText : theme.text};
+            width: 90%;
+          `}
+          editable={!!plans}
+          keyboardType="number-pad"
+          placeholder="직접 입력"
+          value={String(price)}
+          onChangeText={(value) => {
+            const price = Number(value.replace(/[^0-9]/g, ''));
+
+            setPrice(price > 0 ? price.toLocaleString() : '0');
+          }}
+        />
+        <View
+          style={css`
+            width: 10%;
+            align-items: center;
+          `}>
+          <Txt color={theme.greyText}>₩</Txt>
+        </View>
+      </PlanPriceBox>
 
       <Modal
         useNativeDriver
@@ -77,10 +93,11 @@ export default function BillingPlan({ plans }: Props) {
               <PlanItem
                 onPress={() => {
                   setPlan(item.planName);
+                  setPrice(String(item.price.toLocaleString()));
                   setPlanModalVisible(false);
                 }}>
                 <Txt fontWeight="700">{item.planName}</Txt>
-                <Txt fontWeight="300">{`₩ ${addDelimiter(item.price)}`}</Txt>
+                <Txt fontWeight="300">{`₩ ${item.price.toLocaleString()}`}</Txt>
               </PlanItem>
             )}
             keyExtractor={(item) => item.planName}

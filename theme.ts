@@ -5,9 +5,11 @@ export interface ThemeProps {
   primary?: string;
   secondary?: string;
   text?: string;
+  greyText?: string;
 }
 
 const baseTheme = {
+  greyText: '#888',
   primary: '#2596FF',
 };
 
