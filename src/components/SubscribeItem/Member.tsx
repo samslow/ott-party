@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemberView } from './style';
-import { Image } from 'react-native';
+import { Image, Dimensions } from 'react-native';
 import { Txt } from '@src/shared';
 
 interface MemberProps {
@@ -10,7 +10,7 @@ interface MemberProps {
 
 const Member = ({ name, isPaid }: MemberProps) => {
   return (
-    <MemberView>
+    <MemberView screenWidth={Dimensions.get('window').width}>
       <Image
         style={{ height: 18, width: 18 }}
         source={

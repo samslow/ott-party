@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   MemberPayStatusContainer,
   MemberRow,
@@ -13,6 +13,17 @@ interface MemberPayStatusProps {
   isPaid: boolean;
 }
 
+const dummyData: string[] = [
+  '홍길동1',
+  '홍길동2',
+  '홍길동3',
+  '홍길동4',
+  '홍길동5',
+  '홍길동6',
+  '홍길동7',
+  '홍길동8',
+];
+
 const MemberPayStatus = ({ labelName, isPaid }: MemberPayStatusProps) => {
   return (
     <MemberPayStatusContainer>
@@ -22,21 +33,17 @@ const MemberPayStatus = ({ labelName, isPaid }: MemberPayStatusProps) => {
         </Txt>
       </PayStatusLabel>
       <Members>
-        <MemberRow>
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-        </MemberRow>
-        <MemberRow>
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-        </MemberRow>
-        <MemberRow isLast={true}>
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-          <Member name={'홍길동'} isPaid={isPaid} />
-        </MemberRow>
+        {[...Array(Math.ceil(dummyData.length / 3)).keys()].map(
+          (val, index) => {
+            return (
+              <MemberRow key={index}>
+                {dummyData.slice(val * 3, val * 3 + 3).map((val, index) => {
+                  return <Member key={index} name={val} isPaid={isPaid} />;
+                })}
+              </MemberRow>
+            );
+          },
+        )}
       </Members>
     </MemberPayStatusContainer>
   );

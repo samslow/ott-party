@@ -6,6 +6,14 @@ interface MemberRowProps {
   isLast?: boolean;
 }
 
+interface PayStatusActiveProps {
+  width: number;
+}
+
+interface MemberViewProps {
+  screenWidth: number;
+}
+
 export const ServiceCard  = styled.View<ThemeProps>`
   background-color: ${(props) => props.theme.background};
   margin: 15px auto 0 auto;
@@ -65,22 +73,28 @@ export const PayStatusContainer = styled.View<ThemeProps>`
   margin-top: 9px;
 `;
 
-export const PayStatusActive = styled.View<ThemeProps>`
-  width: 50%;
+export const PayStatusActive = styled.View<PayStatusActiveProps & ThemeProps>`
+  width: ${(props) => String(props.width)}%;
+  height: 38px;
   border-radius: 18.5px;
   background-color: rgba(127, 102, 255, 1);
-  padding: 10px 23px;
   position: absolute;
 `;
 
 export const PayStatusInActive = styled.View<ThemeProps>`
   width: 100%;
+  height: 38px;
   border-radius: 18.5px;
   background-color: rgba(249, 249, 249, 1);
-  padding: 10px 23px;
-  display: flex;
+`;
+
+export const PayStatusPrice = styled.View<ThemeProps>`
+  display:flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  padding: 0 17px;
 `;
 
 export const viewCss = css<ViewProps>`
@@ -113,12 +127,16 @@ export const Members = styled.View<ThemeProps>`
 export const MemberRow = styled.View<MemberRowProps & ThemeProps>`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: ${(props) => props.isLast ? '0' : '10' }px;
 `;
 
-export const MemberView = styled.View<ThemeProps>`
+export const MemberView = styled.View<MemberViewProps & ThemeProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  & + & {
+    margin-right: ${(props) => String(props.screenWidth * 0.08)}px;
+  }
 `;

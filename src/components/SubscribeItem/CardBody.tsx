@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  Body,
-  PriceContainer,
-  Section,
-  PayStatusContainer,
-  PayStatusActive,
-  PayStatusInActive,
-  viewCss,
-} from './style';
+import { Body, PriceContainer, Section, viewCss } from './style';
 import { View } from 'react-native';
 import { Divider, Txt } from '@src/shared';
 import MemberPayStatus from './MemberPayStatus';
+import PayStatus from './PayStatus';
+
+const totalAmount = 145000;
+const memberCount = 4;
+const paidMember = 2;
 
 const CardBody = () => {
   return (
@@ -24,10 +21,10 @@ const CardBody = () => {
             매월 6일 알림 예정
           </Txt>
           <Txt size={14} fontWeight={'700'}>
-            총 ₩ 14,500
+            {`총 ₩ ${totalAmount}`}
           </Txt>
           <Txt size={14} fontWeight={'700'} style={{ marginTop: 11 }}>
-            인당 ₩ 3,625
+            {`인당 ₩ ${totalAmount / memberCount}`}
           </Txt>
         </PriceContainer>
       </Section>
@@ -36,18 +33,10 @@ const CardBody = () => {
         <Txt size={16} fontWeight={'700'}>
           이번달 결제 예정 금액
         </Txt>
-        <PayStatusContainer>
-          <PayStatusInActive>
-            <Txt size={14} fontWeight={'700'} color={'#C4C4C4'}>
-              ₩ 3,625
-            </Txt>
-          </PayStatusInActive>
-          <PayStatusActive>
-            <Txt size={14} fontWeight={'700'} color={'white'}>
-              ₩ 10,875
-            </Txt>
-          </PayStatusActive>
-        </PayStatusContainer>
+        <PayStatus
+          totalAmount={totalAmount}
+          paidAmount={(totalAmount / memberCount) * paidMember}
+        />
         <View style={viewCss}>
           <MemberPayStatus labelName={'미결제'} isPaid={false} />
           <MemberPayStatus labelName={'결제완료'} isPaid={true} />
