@@ -1,11 +1,12 @@
+import Header from '@src/shared/Header';
+import { FullflexContainer } from '@src/shared/style';
 import React from 'react';
-import { View, Text } from 'react-native';
 
 const Myinfo = () => {
   return (
-    <View>
-      <Text>내 정보</Text>
-    </View>
+    <FullflexContainer>
+      <Header title="내 정보" />
+    </FullflexContainer>
   );
 };
 
