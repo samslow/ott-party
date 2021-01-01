@@ -10,3 +10,7 @@ export const Container = styled.View<ThemeProps>`
   background-color: ${(props) => props.theme.background};
   flex: 1;
 `;
+
+export const SubscriptionList = styled.FlatList<ThemeProps>`
+  background-color: ${(props) => props.theme.background};
+`;
