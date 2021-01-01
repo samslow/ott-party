@@ -31,7 +31,7 @@ const CardBody = () => {
           </Txt>
         </PriceContainer>
       </Section>
-      <Divider backgroundColor={'#D2D1D7'} verticalMargin={13} />
+      <Divider backgroundColor={'#D2D1D7'} verticalMargin={20} />
       <Section>
         <Txt size={16} fontWeight={'700'}>
           이번달 결제 예정 금액

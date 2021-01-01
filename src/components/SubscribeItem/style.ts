@@ -1,6 +1,6 @@
 import styled, {css} from '@emotion/native';
 import { ThemeProps } from 'theme';
-import { ViewProps} from 'react-native';
+import { ViewProps, ImageProps } from 'react-native';
 
 interface MemberRowProps {
   isLast?: boolean;
@@ -39,7 +39,7 @@ export const SubService = styled.View<ThemeProps>`
 export const Body = styled.View<ThemeProps>`
   display: flex;
   width: 100%;
-  padding: 10px 0;
+  margin-top: 20px;
 `;
 
 export const Section = styled.View<ThemeProps>`
@@ -86,6 +86,12 @@ export const PayStatusInActive = styled.View<ThemeProps>`
 export const viewCss = css<ViewProps>`
   width: 100%;
   margin-top: 12px;
+`;
+
+export const headerImageCss = css<ImageProps>`
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
 `;
 
 export const MemberPayStatusContainer = styled.View<ThemeProps>`
