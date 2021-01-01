@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { Container, FullFlexContainer, SubscriptionList } from './style';
+import { SubscriptionList } from './style';
 import SubscribeItem from '@components/SubscribeItem';
+import { FullflexContainer } from '@src/shared/style';
 
 interface Service {
   id: number;
@@ -18,15 +19,13 @@ const SubscribeList = () => {
   }, [services]);
 
   return (
-    <FullFlexContainer>
-      <Container>
-        <SubscriptionList
-          data={dummyServics}
-          renderItem={({ item }) => <SubscribeItem id={item.id} />}
-          keyExtractor={(item) => String(item.id)}
-        />
-      </Container>
-    </FullFlexContainer>
+    <FullflexContainer>
+      <SubscriptionList
+        data={dummyServics}
+        renderItem={({ item }) => <SubscribeItem id={item.id} />}
+        keyExtractor={(item) => String(item.id)}
+      />
+    </FullflexContainer>
   );
 };
 
