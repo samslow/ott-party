@@ -10,9 +10,6 @@ interface PayStatusActiveProps {
   width: number;
 }
 
-interface MemberViewProps {
-  screenWidth: number;
-}
 
 export const ServiceCard  = styled.View<ThemeProps>`
   background-color: ${(props) => props.theme.background};
@@ -131,12 +128,10 @@ export const MemberRow = styled.View<MemberRowProps & ThemeProps>`
   margin-bottom: ${(props) => props.isLast ? '0' : '10' }px;
 `;
 
-export const MemberView = styled.View<MemberViewProps & ThemeProps>`
+export const MemberView = styled.View<ThemeProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  & + & {
-    margin-right: ${(props) => String(props.screenWidth * 0.08)}px;
-  }
+  width: 90px;
+  padding-right: 20px;
 `;

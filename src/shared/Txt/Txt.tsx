@@ -8,6 +8,7 @@ interface TextProps {
   size?: number;
   color?: string;
   fontWeight?: FontWeight; // size랑 color 도 type주면 자동입력 되게 할 수 있는데 귀차나서 얘만..
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip' | undefined;
   style?: StyleProp<TextStyle>;
 }
 
@@ -19,6 +20,7 @@ export default function Txt({
   children,
   size,
   color,
+  ellipsizeMode,
   fontWeight,
   style,
 }: Props) {
@@ -26,6 +28,8 @@ export default function Txt({
     <AdaptiveText
       size={size}
       color={color}
+      ellipsizeMode={ellipsizeMode}
+      numberOfLines={1}
       fontWeight={fontWeight}
       style={style}>
       {children}
