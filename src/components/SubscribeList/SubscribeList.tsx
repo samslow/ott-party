@@ -1,24 +1,33 @@
-import { StackNavigationProp } from '@react-navigation/stack';
-import { Txt } from '@src/shared';
-import { FullflexContainer } from '@src/shared/style';
-import React from 'react';
-import { StackParams } from '../../../App';
-import { SubscribeButton } from './style';
+import React, { useMemo, useState } from 'react';
+import { Container, FullFlexContainer, SubscriptionList } from './style';
+import SubscribeItem from '@components/SubscribeItem';
 
-export default function SubscribeList({
-  navigation,
-}: {
-  navigation: StackNavigationProp<StackParams>;
-}) {
-  return (
-    <FullflexContainer>
-      {/* 여기는 테스트로 보기위한 용도입니다.  */}
-      <Txt>구독 서비스 추가</Txt>
-      <SubscribeButton onPress={() => navigation.navigate('Subscribe')}>
-        <Txt size={22} color="#FFF" fontWeight="bold">
-          구독 서비스 추가
-        </Txt>
-      </SubscribeButton>
-    </FullflexContainer>
-  );
+interface Service {
+  id: number;
 }
+
+const SubscribeList = () => {
+  const [services, setServices] = useState<Service[] | null>(null);
+
+  const dummyServics: Service[] | null = useMemo(() => {
+    const dd = [];
+    for (let i = 0; i < 10; i++) {
+      dd.push({ id: i });
+    }
+    return dd;
+  }, [services]);
+
+  return (
+    <FullFlexContainer>
+      <Container>
+        <SubscriptionList
+          data={dummyServics}
+          renderItem={({ item }) => <SubscribeItem id={item.id} />}
+          keyExtractor={(item) => String(item.id)}
+        />
+      </Container>
+    </FullFlexContainer>
+  );
+};
+
+export default SubscribeList;

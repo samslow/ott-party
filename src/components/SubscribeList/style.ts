@@ -7,3 +7,7 @@ export const SubscribeButton = styled.TouchableOpacity<ThemeProps>`
   justify-content: center;
   align-items: center;
 `;
+
+export const SubscriptionList = styled.FlatList<ThemeProps>`
+  background-color: ${(props) => props.background};
+`;
