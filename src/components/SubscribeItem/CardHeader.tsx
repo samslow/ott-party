@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Header, SubService, headerImageCss } from './style';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Txt } from '@src/shared';
 
 const CardHeader = () => {
@@ -18,7 +19,7 @@ const CardHeader = () => {
           Netflix
         </Txt>
       </SubService>
-      <Txt size={9}>점점점</Txt>
+      <MaterialIcons name="more-vert" size={24} color={'#C4C4C4'} />
     </Header>
   );
 };
