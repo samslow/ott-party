@@ -14,7 +14,6 @@ export const Button = styled.TouchableOpacity<{ theme?: ThemeProps }>`
   margin-left: auto;
   margin-right: auto;
   padding: 14px 15px;
-  position: relative;
 `;
 
 export const NullBox = styled.View`
