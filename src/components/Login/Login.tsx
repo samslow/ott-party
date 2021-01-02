@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from '@src/shared';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ImageSourcePropType } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { FullflexContainer, IndicatorView } from '@src/shared/style';
@@ -16,6 +16,7 @@ interface LoginInfo {
   name: string;
   iconName?: string;
   iconColor?: string;
+  image?: ImageSourcePropType;
   onPress: () => void;
 }
 
@@ -33,8 +34,7 @@ const Login = () => {
     },
     {
       name: '구글로 로그인',
-      iconName: 'google',
-      iconColor: '#000',
+      image: require('@src/images/ic_google.png'),
       onPress: () =>
         onGoogleButtonPress()
           .then(() =>
@@ -55,8 +55,7 @@ const Login = () => {
     },
     {
       name: '카카오로 로그인',
-      iconName: 'facebook-square',
-      iconColor: '#4267B2',
+      image: require('@src/images/ic_kakao.png'),
       onPress: () => {},
     },
     {
@@ -95,6 +94,7 @@ const Login = () => {
                   name={val.name}
                   iconName={val.iconName}
                   iconColor={val.iconColor}
+                  image={val.image}
                   onPress={val.onPress}
                 />
               );

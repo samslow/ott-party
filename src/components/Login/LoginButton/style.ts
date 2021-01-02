@@ -3,6 +3,8 @@ import { ThemeProps } from 'theme';
 
 export const Button = styled.TouchableOpacity<{ theme?: ThemeProps }>`
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   color: ${(p) => p.theme.text};
   border-radius: 4px;
@@ -11,12 +13,10 @@ export const Button = styled.TouchableOpacity<{ theme?: ThemeProps }>`
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px 15px;
+  padding: 14px 15px;
   position: relative;
 `;
 
-export const IconView = styled.View`
-  position: absolute;
-  left: 15px;
-  top: 14px;
+export const NullBox = styled.View`
+  width: 32px;
 `;
