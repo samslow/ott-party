@@ -1,3 +1,3 @@
-import PayStatus from "./PayStatus";
+import PayStatus from './PayStatus';
 
-export default PayStatus
+export default PayStatus;

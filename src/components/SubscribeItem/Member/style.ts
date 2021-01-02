@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
-import { ThemeProps } from 'theme';
 
-export const MemberView = styled.View<ThemeProps>`
+export const MemberView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;

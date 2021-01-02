@@ -15,7 +15,7 @@ interface PayStatusProps {
 const PayStatus = ({ totalAmount, paidAmount }: PayStatusProps) => {
   const payStatusActiveWidth: number = useMemo(() => {
     return (paidAmount / totalAmount) * 100;
-  }, [paidAmount]);
+  }, [paidAmount, totalAmount]);
 
   return (
     <PayStatusContainer>

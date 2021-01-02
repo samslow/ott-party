@@ -4,12 +4,16 @@ import { View } from 'react-native';
 import { Divider, Txt } from '@src/shared';
 import MemberPayStatus from './MemberPayStatus';
 import PayStatus from './PayStatus';
+import { ThemeProps } from 'theme';
+import { useTheme } from '@emotion/react';
 
 const totalAmount = 145000;
 const memberCount = 4;
 const paidMember = 2;
 
 const CardBody = () => {
+  const theme: ThemeProps = useTheme();
+
   return (
     <Body>
       <Section>
@@ -19,7 +23,7 @@ const CardBody = () => {
         <PriceContainer>
           <Txt size={14} fontWeight={'700'}>
             매월{' '}
-            <Txt size={14} color={'#7F66FF'}>
+            <Txt size={14} color={theme.primary}>
               6
             </Txt>
             일 알림 예정
@@ -32,7 +36,7 @@ const CardBody = () => {
           </Txt>
         </PriceContainer>
       </Section>
-      <Divider backgroundColor={'#D2D1D7'} verticalMargin={20} />
+      <Divider verticalMargin={20} />
       <Section>
         <Txt size={16} fontWeight={'700'}>
           이번달 결제 예정 금액

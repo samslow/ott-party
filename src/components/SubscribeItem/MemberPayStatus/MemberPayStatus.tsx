@@ -13,7 +13,7 @@ interface MemberPayStatusProps {
   isPaid: boolean;
 }
 
-const dummyData: string[] = [
+const dummyData = [
   '홍길동1',
   '홍길동2',
   '홍길동3',

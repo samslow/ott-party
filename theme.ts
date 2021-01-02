@@ -6,6 +6,7 @@ export interface ThemeProps {
   secondary?: string;
   text?: string;
   greyText?: string;
+  dividerColor?: string;
 }
 
 const baseTheme = {
@@ -19,6 +20,7 @@ const lightTheme = {
   background: '#fff',
   greyBackground: '#eee',
   text: '#000',
+  dividerColor: '#D2D1D7',
 };
 
 const darkTheme = {
@@ -27,6 +29,7 @@ const darkTheme = {
   background: '#222',
   greyBackground: '#333',
   text: '#fff',
+  dividerColor: '#fff',
 };
 
 export { lightTheme, darkTheme };

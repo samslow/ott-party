@@ -1,27 +1,26 @@
 import styled from '@emotion/native';
-import { ThemeProps } from 'theme';
 
 interface MemberRowProps {
   isLast?: boolean;
 }
 
-export const MemberPayStatusContainer = styled.View<ThemeProps>`
+export const MemberPayStatusContainer = styled.View`
   width: 100%;
   display: flex;
   flex-direction: row;
   margin-top: 10px;
 `;
 
-export const PayStatusLabel = styled.View<ThemeProps>`
+export const PayStatusLabel = styled.View`
   width: 20%;
   margin-top: 3px;
 `;
 
-export const Members = styled.View<ThemeProps>`
+export const Members = styled.View`
   flex-grow: 1;
 `;
 
-export const MemberRow = styled.View<MemberRowProps & ThemeProps>`
+export const MemberRow = styled.View<MemberRowProps>`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
