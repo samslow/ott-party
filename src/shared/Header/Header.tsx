@@ -32,14 +32,14 @@ export default function Header({ title, noBack }: Props) {
       <Txt size={20} fontWeight="900">
         {title}
       </Txt>
-      {route.name === 'MyInfo' ? (
-        <NullBox />
-      ) : (
+      {route.name === 'SubscribeList' ? (
         <TouchableIconBox
           activeOpacity={0.5}
           onPress={() => navigation.navigate('MyInfo')}>
           <Ionicons name="person" size={17} color={theme.primary} />
         </TouchableIconBox>
+      ) : (
+        <NullBox />
       )}
     </HeaderContainer>
   );

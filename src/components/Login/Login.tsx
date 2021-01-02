@@ -1,69 +1,108 @@
-import React, { useState, useEffect } from 'react';
-import { Txt } from '@src/shared';
-import { Text, View } from 'react-native';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import React, { useState } from 'react';
+import { Header } from '@src/shared';
+import { ActivityIndicator } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import { FullflexContainer, IndicatorView } from '@src/shared/style';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackParams } from '@src/App';
+import { useTheme } from '@emotion/react';
+import { ThemeProps } from 'theme';
+import { ButtonView } from './style';
+import LoginButton from './LoginButton';
 
-GoogleSignin.configure({
-  webClientId: process.env.GOOGLE_SIGN_IN_ID,
-});
+interface LoginInfo {
+  name: string;
+  iconName?: string;
+  iconColor?: string;
+  onPress: () => void;
+}
 
 const Login = () => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+  const navigation = useNavigation<StackNavigationProp<StackParams>>();
+  const [loading, setLoading] = useState(false);
+  const theme: ThemeProps = useTheme();
 
-  useEffect(() => {
-    auth().onAuthStateChanged((userState) => {
-      setUser(userState);
-
-      if (loading) {
-        setLoading(false);
-      }
-    });
-  }, []);
+  const loginInfos: LoginInfo[] = [
+    {
+      name: '페이스북로 로그인',
+      iconName: 'facebook-square',
+      iconColor: '#4267B2',
+      onPress: () => {},
+    },
+    {
+      name: '구글로 로그인',
+      iconName: 'google',
+      iconColor: '#000',
+      onPress: () =>
+        onGoogleButtonPress()
+          .then(() =>
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'SubscribeList' }],
+            }),
+          )
+          .catch((e) => {
+            console.log(e);
+          }),
+    },
+    {
+      name: '애플 로그인',
+      iconName: 'apple',
+      iconColor: '#949494',
+      onPress: () => {},
+    },
+    {
+      name: '카카오로 로그인',
+      iconName: 'facebook-square',
+      iconColor: '#4267B2',
+      onPress: () => {},
+    },
+    {
+      name: '게스트로 로그인',
+      onPress: () => {},
+    },
+  ];
 
   const onGoogleButtonPress = async () => {
-    // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
+    setLoading(true);
 
-    // Create a Google credential with the token
+    GoogleSignin.configure({
+      webClientId: process.env.GOOGLE_SIGN_IN_ID,
+    });
+
+    const { idToken } = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-    // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
   };
 
-  const signOut = () => {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-  };
-
-  if (loading) return null;
-
-  if (!user) {
-    return (
-      <View>
-        <Text
-          onPress={() =>
-            onGoogleButtonPress()
-              .then(() => console.log('Signed in with Google!'))
-              .catch((e) => {
-                console.log(e);
-              })
-          }>
-          Google 로그인
-        </Text>
-      </View>
-    );
-  }
-
   return (
-    <View>
-      <Txt>Hello</Txt>
-      <Text>{user.email}</Text>
-      <Text onPress={() => signOut()}>로그아웃</Text>
-    </View>
+    <FullflexContainer>
+      {loading ? (
+        <IndicatorView>
+          <ActivityIndicator size="large" color={theme.primary} />
+        </IndicatorView>
+      ) : (
+        <>
+          <Header title="로그인 페이지" noBack />
+          <ButtonView style={{ marginTop: 40 }}>
+            {loginInfos.map((val, index) => {
+              return (
+                <LoginButton
+                  key={index}
+                  name={val.name}
+                  iconName={val.iconName}
+                  iconColor={val.iconColor}
+                  onPress={val.onPress}
+                />
+              );
+            })}
+          </ButtonView>
+        </>
+      )}
+    </FullflexContainer>
   );
 };
 
