@@ -3,13 +3,13 @@ import { Header } from '@src/shared';
 import { ActivityIndicator, ImageSourcePropType } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
-import { FullflexContainer, IndicatorView } from '@src/shared/style';
+import { FullflexContainer } from '@src/shared/style';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParams } from '@src/App';
 import { useTheme } from '@emotion/react';
 import { ThemeProps } from 'theme';
-import { ButtonView } from './style';
+import { ButtonView, IndicatorView } from './style';
 import LoginButton from './LoginButton';
 
 interface LoginInfo {
