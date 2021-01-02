@@ -1,9 +1,5 @@
 import React, { useMemo, useState } from 'react';
-<<<<<<< HEAD
 import { SubscriptionList } from './style';
-=======
-import { Container, FullFlexContainer, SubscriptionList } from './style';
->>>>>>> feat: change dummy data functions
 import SubscribeItem from '@components/SubscribeItem';
 import { FullflexContainer } from '@src/shared/style';
 import { Button } from 'react-native';
@@ -28,6 +24,7 @@ const SubscribeList = () => {
     return dd;
   }, [services]);
 
+  // FIXME
   return (
     <FullflexContainer>
       <Header title="구독 리스트" noBack />

@@ -12,7 +12,7 @@ interface PayStatusActiveProps {
 
 
 export const ServiceCard  = styled.View<ThemeProps>`
-  background-color: ${(props) => props.theme.background};
+  background-color: white;
   margin: 15px auto 0 auto;
   padding: 18px;
   border-radius: 10px;
@@ -58,7 +58,7 @@ export const PriceContainer = styled.View<ThemeProps>`
   align-items: center;
   width: 100%;
   padding: 20px 0;
-  background-color: #F9F9FB;
+  background-color: #F9F9F9;
   border-radius: 18.5px;
   margin-top: 9px;
 `;
