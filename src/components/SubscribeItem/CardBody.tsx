@@ -25,10 +25,10 @@ const CardBody = () => {
             일 알림 예정
           </Txt>
           <Txt size={14} fontWeight={'700'}>
-            {`총 ₩ ${totalAmount}`}
+            {`총 ₩ ${totalAmount.toLocaleString()}`}
           </Txt>
           <Txt size={14} fontWeight={'700'} style={{ marginTop: 11 }}>
-            {`인당 ₩ ${totalAmount / memberCount}`}
+            {`인당 ₩ ${(totalAmount / memberCount).toLocaleString()}`}
           </Txt>
         </PriceContainer>
       </Section>

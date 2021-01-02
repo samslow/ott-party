@@ -25,10 +25,10 @@ const PayStatus = ({ totalAmount, paidAmount }: PayStatusProps) => {
       )}
       <PayStatusPrice>
         <Txt size={14} fontWeight={'700'} color={'rgba(127, 102, 255, 1)'}>
-          {`₩ ${paidAmount}`}
+          {`₩ ${paidAmount.toLocaleString()}`}
         </Txt>
         <Txt size={14} fontWeight={'700'} color={'#C4C4C4'}>
-          {`₩ ${totalAmount - paidAmount}`}
+          {`₩ ${(totalAmount - paidAmount).toLocaleString()}`}
         </Txt>
       </PayStatusPrice>
     </PayStatusContainer>
