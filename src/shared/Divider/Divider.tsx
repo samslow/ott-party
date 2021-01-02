@@ -22,8 +22,9 @@ export default function Divider({
   );
 }
 
-const AdaptiveDivider = styled.View<DividerProps & ThemeProps>`
-  background-color: ${(props) => props.backgroundColor ?? props.theme.text};
+const AdaptiveDivider = styled.View<{ theme?: ThemeProps } & DividerProps>`
+  background-color: ${(props) =>
+    props.backgroundColor ?? props.theme.dividerColor};
   width: ${(props) => String(props.width ?? 100)}%;
   height: 1px;
   margin: ${(props) => String(props.verticalMargin ?? 0)}px auto;
