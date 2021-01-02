@@ -6,7 +6,7 @@ import {
   Members,
 } from './style';
 import { Txt } from '@src/shared';
-import Member from './Member';
+import Member from '../Member';
 
 interface MemberPayStatusProps {
   labelName: string;
