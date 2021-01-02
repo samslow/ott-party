@@ -3,7 +3,7 @@ import { ThemeProps } from 'theme';
 import { ViewProps, ImageProps } from 'react-native';
 
 export const ServiceCard = styled.View<{ theme?: ThemeProps }>`
-  background-color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.serviceCardColor};
   margin: 15px auto 0 auto;
   padding: 18px;
   border-radius: 10px;

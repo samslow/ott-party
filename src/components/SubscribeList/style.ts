@@ -8,4 +8,6 @@ export const SubscribeButton = styled.TouchableOpacity<{ theme?: ThemeProps }>`
   align-items: center;
 `;
 
-export const SubscriptionList = styled.FlatList<{ theme?: ThemeProps }>``;
+export const SubscriptionList = styled.FlatList<{ theme?: ThemeProps }>`
+  background-color: ${(props) => props.theme.background};
+`;
