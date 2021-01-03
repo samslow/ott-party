@@ -6,12 +6,14 @@ export interface ThemeProps {
   secondary?: string;
   text?: string;
   greyText?: string;
+  buttonText?: string;
   dividerColor?: string;
   serviceCardColor?: string;
 }
 
 const baseTheme = {
   greyText: '#888',
+  buttonText: '#fff',
   primary: '#7F66FF',
 };
 
