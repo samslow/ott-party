@@ -7,18 +7,21 @@ import { useTheme } from '@emotion/react';
 import { ThemeProps } from 'theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from './Input';
-import { UserView, IconBox, SignOutButton, InputView, Row } from './style';
+import {
+  UserView,
+  IconBox,
+  SignOutButton,
+  InputView,
+  Row,
+  safeAreaViewCss,
+} from './style';
 
 const Myinfo = () => {
   const theme: ThemeProps = useTheme();
   return (
     <FullflexContainer>
       <Header title="내 정보" />
-      <SafeAreaView
-        style={{
-          position: 'relative',
-          flex: 1,
-        }}>
+      <SafeAreaView style={safeAreaViewCss}>
         <UserView>
           <IconBox>
             <Ionicons name="person" size={44} color={theme.primary} />

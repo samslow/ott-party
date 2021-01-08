@@ -1,10 +1,13 @@
-import styled from '@emotion/native';
+import styled, { css } from '@emotion/native';
 import { ThemeProps } from 'theme';
+
+export const safeAreaViewCss = css`
+  position: relative;
+  flex: 1;
+`;
 
 export const UserView = styled.View`
   margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
   align-items: center;
 `;
 
@@ -21,8 +24,6 @@ export const IconBox = styled.View`
 export const InputView = styled.View`
   width: 87%;
   margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export const SignOutButton = styled.TouchableOpacity<{ theme?: ThemeProps }>`
