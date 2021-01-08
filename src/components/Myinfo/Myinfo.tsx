@@ -15,10 +15,10 @@ const Myinfo = () => {
     <FullflexContainer>
       <Header title="내 정보" />
       <SafeAreaView
-        style={{
+        style= css`
           position: 'relative',
           flex: 1,
-        }}>
+        `>
         <UserView>
           <IconBox>
             <Ionicons name="person" size={44} color={theme.primary} />
