@@ -27,7 +27,7 @@ const Login = () => {
 
   const loginInfos: LoginInfo[] = [
     {
-      name: '페이스북로 로그인',
+      name: '페이스북으로 로그인',
       iconName: 'facebook-square',
       iconColor: '#4267B2',
       onPress: () => {},
