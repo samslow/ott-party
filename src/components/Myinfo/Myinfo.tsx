@@ -7,6 +7,10 @@ import { useTheme } from '@emotion/react';
 import { ThemeProps } from 'theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from './Input';
+import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackParams } from '@src/App';
 import {
   UserView,
   IconBox,
@@ -18,6 +22,19 @@ import {
 
 const Myinfo = () => {
   const theme: ThemeProps = useTheme();
+  const navigation = useNavigation<StackNavigationProp<StackParams>>();
+
+  const signOut = () => {
+    auth()
+      .signOut()
+      .then(() =>
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        }),
+      );
+  };
+
   return (
     <FullflexContainer>
       <Header title="내 정보" />
@@ -42,7 +59,7 @@ const Myinfo = () => {
             <Input placeHolder={'계좌번호'} keyboardType={'number-pad'} />
           </Row>
         </InputView>
-        <SignOutButton>
+        <SignOutButton onPress={signOut}>
           <Txt size={20} color={theme.buttonText} fontWeight={'700'}>
             로그아웃
           </Txt>

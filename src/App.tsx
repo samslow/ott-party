@@ -4,6 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Myinfo from '@stacks/MyInfo';
 import Subscribe from '@stacks/Subscribe';
 import SubscribeList from '@stacks/SubscribeList';
+import Login from '@stacks/Login';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Appearance, StatusBar } from 'react-native';
 import { darkTheme, lightTheme } from '../theme';
@@ -12,11 +14,14 @@ export type StackParams = {
   SubscribeList: undefined;
   Subscribe: undefined;
   MyInfo: undefined;
+  Login: undefined;
 };
 
 const Stack = createStackNavigator<StackParams>();
 
 export default function App() {
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
   const [colorScheme, setColorScheme] = useState<
     'light' | 'dark' | null | undefined
   >(Appearance.getColorScheme());
@@ -29,6 +34,12 @@ export default function App() {
     Appearance.addChangeListener(({ colorScheme }) => {
       setColorScheme(colorScheme);
     });
+
+    const authSubscriber = auth().onAuthStateChanged((userState) => {
+      setUser(userState);
+    });
+
+    return authSubscriber;
   }, []);
 
   return (
@@ -37,7 +48,9 @@ export default function App() {
         <StatusBar
           barStyle={colorScheme === 'light' ? 'dark-content' : 'light-content'}
         />
-        <Stack.Navigator initialRouteName="SubscribeList" headerMode="screen">
+        <Stack.Navigator
+          initialRouteName={user !== null ? 'SubscribeList' : 'Login'}
+          headerMode="screen">
           <Stack.Screen
             name="SubscribeList"
             component={SubscribeList}
@@ -59,6 +72,14 @@ export default function App() {
             component={Myinfo}
             options={{
               title: '내 정보',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              title: '로그인',
               headerShown: false,
             }}
           />
