@@ -24,6 +24,8 @@ export const IconBox = styled.View`
 export const InputView = styled.View`
   width: 87%;
   margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const SignOutButton = styled.TouchableOpacity<{ theme?: ThemeProps }>`
