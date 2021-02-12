@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from '@src/shared';
 import { ActivityIndicator, ImageSourcePropType } from 'react-native';
+import Config from 'react-native-config';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { FullflexContainer } from '@src/shared/style';
@@ -68,7 +69,7 @@ const Login = () => {
     setLoading(true);
 
     GoogleSignin.configure({
-      webClientId: process.env.GOOGLE_SIGN_IN_ID,
+      webClientId: Config.GOOGLE_SIGN_IN_ID,
     });
 
     const { idToken } = await GoogleSignin.signIn();

@@ -10,6 +10,7 @@ target 'ottParty' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'ottPartyTests' do
     inherit! :complete
     # Pods for testing
