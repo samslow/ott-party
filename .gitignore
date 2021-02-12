@@ -62,3 +62,5 @@ ios/GoogleService-Info.plist
 ios/tmp.xcconfig
 android/app/google-services.json
 android/*.hprof
+
+.env
