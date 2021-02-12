@@ -44,8 +44,14 @@ export const loginInfos: LoginInfo[] = [
   //     image: require('@src/images/ic_kakao.png'),
   //     signIn: () => {},
   //   },
-  //   {
-  //     name: '게스트로 로그인',
-  //     signIn: () => {},
-  //   },
+  {
+    name: '게스트로 로그인',
+    signIn: () => {
+      return auth().signInAnonymously();
+    },
+  },
 ];
+
+export const isSignedIn = (): boolean => {
+  return auth().currentUser !== null;
+};
