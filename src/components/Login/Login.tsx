@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from '@src/shared';
-import { ActivityIndicator, ImageSourcePropType } from 'react-native';
-import Config from 'react-native-config';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { ActivityIndicator } from 'react-native';
 import { FullflexContainer } from '@src/shared/style';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -13,70 +10,12 @@ import { ThemeProps } from 'theme';
 import { ButtonView, IndicatorView } from './style';
 import LoginButton from './LoginButton';
 
-interface LoginInfo {
-  name: string;
-  iconName?: string;
-  iconColor?: string;
-  image?: ImageSourcePropType;
-  onPress: () => void;
-}
+import { loginInfos } from '@src/utils/ott_auth';
 
 const Login = () => {
   const navigation = useNavigation<StackNavigationProp<StackParams>>();
   const [loading, setLoading] = useState(false);
   const theme: ThemeProps = useTheme();
-
-  const loginInfos: LoginInfo[] = [
-    {
-      name: '페이스북으로 로그인',
-      iconName: 'facebook-square',
-      iconColor: '#4267B2',
-      onPress: () => {},
-    },
-    {
-      name: '구글로 로그인',
-      image: require('@src/images/ic_google.png'),
-      onPress: () =>
-        onGoogleButtonPress()
-          .then(() =>
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'SubscribeList' }],
-            }),
-          )
-          .catch((e) => {
-            console.log(e);
-          }),
-    },
-    {
-      name: '애플 로그인',
-      iconName: 'apple',
-      iconColor: '#949494',
-      onPress: () => {},
-    },
-    {
-      name: '카카오로 로그인',
-      image: require('@src/images/ic_kakao.png'),
-      onPress: () => {},
-    },
-    {
-      name: '게스트로 로그인',
-      onPress: () => {},
-    },
-  ];
-
-  const onGoogleButtonPress = async () => {
-    setLoading(true);
-
-    GoogleSignin.configure({
-      webClientId: Config.GOOGLE_SIGN_IN_ID,
-    });
-
-    const { idToken } = await GoogleSignin.signIn();
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    return auth().signInWithCredential(googleCredential);
-  };
 
   return (
     <FullflexContainer>
@@ -88,15 +27,29 @@ const Login = () => {
         <>
           <Header title="로그인 페이지" noBack />
           <ButtonView style={{ marginTop: 40 }}>
-            {loginInfos.map((val, index) => {
+            {loginInfos.map((loginInfo, index) => {
               return (
                 <LoginButton
                   key={index}
-                  name={val.name}
-                  iconName={val.iconName}
-                  iconColor={val.iconColor}
-                  image={val.image}
-                  onPress={val.onPress}
+                  name={loginInfo.name}
+                  iconName={loginInfo.iconName}
+                  iconColor={loginInfo.iconColor}
+                  image={loginInfo.image}
+                  onPress={() => {
+                    setLoading(true);
+                    loginInfo
+                      .signIn()
+                      .then(() =>
+                        navigation.reset({
+                          index: 0,
+                          routes: [{ name: 'SubscribeList' }],
+                        }),
+                      )
+                      .catch((e) => {
+                        setLoading(false);
+                        console.log(e);
+                      });
+                  }}
                 />
               );
             })}
