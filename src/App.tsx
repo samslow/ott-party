@@ -10,6 +10,8 @@ import React, { useEffect, useState } from 'react';
 import { Appearance, StatusBar } from 'react-native';
 import { darkTheme, lightTheme } from '../theme';
 
+import { isSignedIn } from '@src/utils/ott_auth';
+
 export type StackParams = {
   SubscribeList: undefined;
   Subscribe: undefined;
@@ -20,8 +22,6 @@ export type StackParams = {
 const Stack = createStackNavigator<StackParams>();
 
 export default function App() {
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
-
   const [colorScheme, setColorScheme] = useState<
     'light' | 'dark' | null | undefined
   >(Appearance.getColorScheme());
@@ -35,9 +35,7 @@ export default function App() {
       setColorScheme(colorScheme);
     });
 
-    const authSubscriber = auth().onAuthStateChanged((userState) => {
-      setUser(userState);
-    });
+    const authSubscriber = auth().onAuthStateChanged((_) => {});
 
     return authSubscriber;
   }, []);
@@ -49,7 +47,7 @@ export default function App() {
           barStyle={colorScheme === 'light' ? 'dark-content' : 'light-content'}
         />
         <Stack.Navigator
-          initialRouteName={user !== null ? 'SubscribeList' : 'Login'}
+          initialRouteName={isSignedIn() ? 'SubscribeList' : 'Login'}
           headerMode="screen">
           <Stack.Screen
             name="SubscribeList"
