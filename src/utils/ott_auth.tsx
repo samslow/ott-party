@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth/lib/index';
 import { GoogleSignin } from '@react-native-community/google-signin';
 
-interface LoginInfo {
+export interface LoginInfo {
   name: string;
   iconName?: string;
   iconColor?: string;

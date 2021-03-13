@@ -10,12 +10,27 @@ import { ThemeProps } from 'theme';
 import { ButtonView, IndicatorView } from './style';
 import LoginButton from './LoginButton';
 
-import { loginInfos } from '@src/utils/ott_auth';
+import { loginInfos, LoginInfo } from '@src/utils/ott_auth';
 
 const Login = () => {
   const navigation = useNavigation<StackNavigationProp<StackParams>>();
   const [loading, setLoading] = useState(false);
   const theme: ThemeProps = useTheme();
+
+  const signIn = (loginInfo: LoginInfo) => {
+    loginInfo
+      .signIn()
+      .then(() =>
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'SubscribeList' }],
+        }),
+      )
+      .catch((e) => {
+        setLoading(false);
+        console.log(e);
+      });
+  };
 
   return (
     <FullflexContainer>
@@ -37,18 +52,7 @@ const Login = () => {
                   image={loginInfo.image}
                   onPress={() => {
                     setLoading(true);
-                    loginInfo
-                      .signIn()
-                      .then(() =>
-                        navigation.reset({
-                          index: 0,
-                          routes: [{ name: 'SubscribeList' }],
-                        }),
-                      )
-                      .catch((e) => {
-                        setLoading(false);
-                        console.log(e);
-                      });
+                    signIn(loginInfo);
                   }}
                 />
               );
